@@ -112,3 +112,31 @@ kind delete cluster --name my-kind-cluster
 Multiple Clusters: KIND supports multiple clusters. Use unique --name for each cluster.
 Custom Node Images: Specify Kubernetes versions by updating the image in the configuration file.
 Ephemeral Clusters: KIND clusters are temporary and will be lost if Docker is restarted.
+
+
+## Technologies Used
+
+- Kubernetes
+- KIND
+- Docker
+- kubectl
+- Nginx
+- YAML
+- Linux/Ubuntu
+- Git & GitHub
+
+
+## Kubernetes Resources Practiced
+
+- Namespace
+- Pod
+- Deployment
+- ReplicaSet
+- DaemonSet
+- Service
+- Job
+- CronJob
+- PersistentVolume
+- PersistentVolumeClaim
+- Ingress
+- Kubernetes Dashboard
