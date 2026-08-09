@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  namespace: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+
+spec:
+  ingressClassName: nginx
+
+  rules:
+  - http:
+      paths:
+      - path: /notes-app(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: notes-app-service
+            port:
+              number: 8000
+

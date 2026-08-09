@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: notes-app-deployment
+  namespace: nginx
+  labels:
+    app: notes-app
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: notes-app
+
+  template:
+    metadata:
+      labels:
+        app: notes-app
+
+    spec:
+      containers:
+        - name: notes-app
+          image: priyanshu066/notes-app-k8s:latest
+          ports:
+            - containerPort: 8000
+          livenessProbe: 
+              httpGet:
+                path: /
+                port: 8000
+          readinessProbe:
+              httpGet:
+                path:
+                port: 8000
+          env:
+            - name: DB_NAME
+              value: test_db
+
+            - name: DB_USER
+              value: root
+
+            - name: DB_PASSWORD
+              value: root
+
+            - name: DB_HOST
+              value: mysql-service
+
+            - name: DB_PORT
+              value: "3306"
